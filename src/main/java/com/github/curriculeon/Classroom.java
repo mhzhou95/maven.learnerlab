@@ -7,6 +7,6 @@ public final class Classroom extends People{
     public Instructors instructors = Instructors.getInstance();
 
     public void hostLecture(Teacher teacher, double numberOfHours){
-        for ( students.
+        teacher.lecture( students,numberOfHours);
     }
 }
