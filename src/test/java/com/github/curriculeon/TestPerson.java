@@ -42,7 +42,7 @@ public class TestPerson {
         String actualName = person.getName();
 
         //then
-        Assert.assertEquals(actualId, expectedId);
+        Assert.assertEquals(actualId, expectedId, 0);
         Assert.assertEquals(actualName, expectedName);
     }
 

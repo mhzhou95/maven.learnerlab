@@ -1,7 +1,7 @@
 package com.github.curriculeon;
 
 public class Student extends Person implements Learner{
-    double totalStudyTime;
+    private double totalStudyTime;
 
     Student(long id, String name) {
         super(id, name);
