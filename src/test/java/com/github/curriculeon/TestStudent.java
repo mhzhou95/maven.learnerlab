@@ -27,14 +27,14 @@ public class TestStudent {
 
     private void testLearn(double numberOfHours) {
         Learner student = new Student(0, "student1");
-        long preStudyHours = (long) student.getTotalStudyTime();
+        double preStudyHours = student.getTotalStudyTime();
         student.learn(numberOfHours);
 
         // when
-        long expectedHours = (long)numberOfHours;
-        long actualHours = (long)student.getTotalStudyTime() - preStudyHours;
+        double expectedHours = numberOfHours;
+        double actualHours = student.getTotalStudyTime() - preStudyHours;
         // then
-        Assert.assertEquals(expectedHours, actualHours);
+        Assert.assertEquals(expectedHours, actualHours, 0);
     }
 
     private void testImplementation(){

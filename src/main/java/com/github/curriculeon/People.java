@@ -1,10 +1,18 @@
 package com.github.curriculeon;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class People {
-    private List<Person> personList = new ArrayList<>();
+public class People implements Iterable<Person>{
+    private List<Person> personList;
+
+    People(){
+        this.personList = new ArrayList<>();
+    }
+    People(ArrayList<Person> personList){
+        this.personList = personList;
+    }
 
     public void add (Person person) {
         personList.add(person);
@@ -29,8 +37,8 @@ public class People {
     }
 
     public void removePerson(Long id){
-        int idToInt = id.intValue();
-        personList.remove(idToInt);
+        Person personToRemove = this.findById(id);
+        removePerson(personToRemove);
     }
 
     public void removeAll(){
@@ -46,5 +54,8 @@ public class People {
         return personList.toArray(arrayPerson);
     }
 
-
+    @Override
+    public Iterator<Person> iterator() {
+        return personList.iterator();
+    }
 }

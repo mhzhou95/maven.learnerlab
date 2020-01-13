@@ -7,12 +7,12 @@ public class TestPeople {
 
     @Test
     public void testAdd0(){
-        testAdd((long) 2, "SpeedWind");
+        testAdd( 2L, "SpeedWind");
     }
 
     @Test
     public void testAdd1(){
-        testAdd((long) 8, "MovingShadow");
+        testAdd(8L, "MovingShadow");
     }
 
     private void testAdd(Long expectedId, String expectedName){
@@ -49,12 +49,12 @@ public class TestPeople {
 
     @Test
     public void findById0(){
-        findById((long) 82);
+        findById( 82L);
     }
 
     @Test
     public void findById1(){
-        findById((long) 234324);
+        findById(234324L);
     }
 
     private void findById(long expectedId) {

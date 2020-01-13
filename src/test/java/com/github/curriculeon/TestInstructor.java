@@ -43,44 +43,45 @@ public class TestInstructor {
     }
 
     private void testImplementation() {
-        Teacher teacher = new Instructor(0);
+        Teacher teacher = new Instructor(0L);
         //then
         Assert.assertTrue(teacher instanceof Teacher);
     }
 
     private void testInheritance() {
-        Teacher teacher = new Instructor(0);
+        Teacher teacher = new Instructor(0L);
         //then
         Assert.assertTrue(teacher instanceof Person);
     }
 
     private void testTeach(double numberOfHours) {
-        Teacher teacher = new Instructor(0, "instructor0");
-        Learner student = new Student(1, "student1");
+        Teacher teacher = new Instructor(0L, "instructor0");
+        Learner student = new Student(1L, "student1");
+        double preStudyHours = student.getTotalStudyTime();
         teacher.teach(student, numberOfHours);
         // when
-        long expectedHours = (long)numberOfHours;
-        long actualHours = (long)student.getTotalStudyTime();
+        double expectedHours = numberOfHours;
+        double actualHours = student.getTotalStudyTime()-preStudyHours;
         //then
-        Assert.assertEquals(expectedHours, actualHours);
+        Assert.assertEquals(expectedHours, actualHours, 0);
     }
     private void testLecture(double numberOfLectureHours) {
-        Learner student1 = new Student(1, "student1");
-        Learner student2 = new Student(2, "student2");
-        Learner student3 = new Student(3, "student3");
+        Learner student1 = new Student(1L, "student1");
+        Learner student2 = new Student(2L, "student2");
+        Learner student3 = new Student(3L, "student3");
 
         Learner[] learners = {student1, student2, student3};
 
-        Teacher instructor1 = new Instructor(0, "instructor");
+        Teacher instructor1 = new Instructor(0L, "instructor");
         // when
         instructor1.lecture(learners, numberOfLectureHours);
-        long expected = (long)numberOfLectureHours/learners.length;
-        long actualStudent1 = (long)student1.getTotalStudyTime();
-        long actualStudent2 = (long)student1.getTotalStudyTime();
-        long actualStudent3 = (long)student1.getTotalStudyTime();
+        double expected = numberOfLectureHours/learners.length;
+        double actualStudent1 = student1.getTotalStudyTime();
+        double actualStudent2 = student1.getTotalStudyTime();
+        double actualStudent3 = student1.getTotalStudyTime();
         // then
-        Assert.assertEquals(expected, actualStudent1);
-        Assert.assertEquals(expected, actualStudent2);
-        Assert.assertEquals(expected, actualStudent3);
+        Assert.assertEquals(expected, actualStudent1, 0);
+        Assert.assertEquals(expected, actualStudent2, 0);
+        Assert.assertEquals(expected, actualStudent3, 0);
     }
 }
